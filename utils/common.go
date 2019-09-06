@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"dogego-mini/models"
 	"dogego-mini/serializer"
 	"encoding/json"
 	"fmt"
@@ -9,7 +8,6 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/gin-gonic/gin"
 	"gopkg.in/go-playground/validator.v8"
 )
 
@@ -49,13 +47,4 @@ func BuildErrorResponse(err error) *serializer.Response {
 		Message: "参数错误",
 		Error:   fmt.Sprint(err),
 	}
-}
-
-func CurrentUser(context *gin.Context) *models.User {
-	if user, _ := context.Get("user"); user != nil {
-		if u, ok := user.(*models.User); ok {
-			return u
-		}
-	}
-	return nil
 }
