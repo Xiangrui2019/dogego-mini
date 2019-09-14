@@ -5,10 +5,13 @@ services:
     image: dogego-mini
     restart: always
     environment:
-      - ADDR=:3000
-      - DATABASE_DSN=
+      - ADDR_HTTP=:3000
+      - ADDR_HTTP2=:3001
+      - ENABLE_JRPC=enable
+      - TLS_PEM=./certs/cert.pem
+      - TLS_KEY=./certs/cert.key
+      - DATABASE_DSN=dbuser:dbpwd@tcp(dbname:3306)/dogego-mini?charset=utf8&parseTime=true
       - CORS_DOMAIN=*
-      - SESSION_SECERT=xzvfdsfsddsfsdsdsfsfdf
       - REDIS_ADDR=127.0.0.1:6379
       - REDIS_PASSWORD=
       - GIN_MODE=debug
