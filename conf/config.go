@@ -2,6 +2,7 @@ package conf
 
 import (
 	"dogego-mini/cache"
+	"dogego-mini/healthchecks"
 	"dogego-mini/models"
 	"dogego-mini/modules"
 	"os"
@@ -15,4 +16,5 @@ func init() {
 	models.ConnectDatabase(os.Getenv("DATABASE_DSN"))
 	cache.ConnectRedisCache()
 	modules.InitAllModules()
+	healthchecks.RegisterHealthChecks()
 }
